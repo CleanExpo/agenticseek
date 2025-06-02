@@ -34,7 +34,12 @@ config.read('config.ini')
 
 api.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost", "http://localhost:3000"],
+    allow_origins=[
+        "http://localhost",
+        "http://localhost:3000",
+        "https://agenticseek.vercel.app",
+        os.getenv("CORS_ORIGINS", "").split(",")
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
